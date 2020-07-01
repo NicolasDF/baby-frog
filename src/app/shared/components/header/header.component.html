@@ -1,0 +1,16 @@
+<mat-toolbar class="header" color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    Icon
+  </button>
+  <span class="header__title">Baby Frog</span>
+  <div class="header__navigation">
+    <a
+      *ngFor="let section of sections;"
+      mat-icon-button
+      class="example-icon favorite-icon"
+      [routerLink]="section.route"
+    >
+      {{ section.label }}
+    </a>
+  </div>
+</mat-toolbar>

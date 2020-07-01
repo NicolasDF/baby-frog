@@ -1,0 +1,140 @@
+<div
+  class="text-field__container"
+  [ngClass]="{
+    'text-field__container--error': controlHasErrors(),
+    'text-field__container--focus': hasFocus
+  }"
+>
+  <div class="text-field__label-container">
+    <label *ngIf="label">{{ label }}<span *ngIf="showAsRequired" class="label__required">*</span></label>
+    <mat-icon
+      *ngIf="labelIcon"
+      class="label__icon"
+      matTooltip="{{ tooltipText }}"
+      matTooltipShowDelay="{{ tooltipDelay[0] }}"
+      matTooltipHideDelay="{{ tooltipDelay[1] }}"
+      matTooltipPosition="{{ tooltipPosition }}"
+    >{{ labelIcon }}</mat-icon>
+    <ng-content select="a"></ng-content>
+  </div>
+  <div
+    class="text-field__input {{ inputClass }} "
+    [ngClass]="{
+      'text-field__input--prefix': !!prefix,
+      'text-field__input--suffix': !!suffix,
+      'text-field__input--disabled': control.disabled
+    }"
+  >
+
+    <button
+      type="button"
+      *ngIf="prefix && prefix.clickable"
+      mat-icon-button
+      color="accent"
+      class="prefix prefix--clickable"
+      [ngClass]="{'prefix--disabled': control.disabled}"
+    >
+      <mat-icon>{{ prefix.icon }}</mat-icon>
+    </button>
+
+    <span
+      *ngIf="prefix && !prefix.clickable"
+      class="prefix mat-icon-button"
+      [ngClass]="{'prefix--text': isTextIcon(prefix.icon), 'prefix--disabled': control.disabled}"
+      tabindex="-1"
+    >
+      <span class="mat-button-wrapper">
+        <mat-icon>{{ prefix.icon }}</mat-icon>
+      </span>
+    </span>
+
+    <ng-container *ngIf="!typeahead; else withTypeahead">
+      <ng-container *ngIf="type !== 'datepicker'">
+        <input
+          #input
+          [type]="type"
+          [placeholder]="placeholder"
+          [formControl]="control"
+          [attr.maxlength]="maxLength"
+          [attr.minlength]="minLength"
+          [autocomplete]="autocomplete"
+          [mask]="mask"
+          [hiddenInput]="hiddenInput"
+          [patterns]="maskPatterns"
+          [thousandSeparator]="thousandSeparator"
+          [separatorLimit]="separatorLimit"
+          [validation]="maskValidation"
+          (blur)="emitBlur()"
+        >
+      </ng-container>
+      <ng-container *ngIf="type === 'datepicker'">
+          <input
+            #input
+            class="datepicker"
+            [matDatepicker]="datepicker"
+            [matDatepickerFilter]="dateFilter"
+            [placeholder]="placeholder"
+            [formControl]="control"
+            [attr.maxlength]="maxLength"
+            (change)="control.markAsDirty()"
+            (keypress)="control.markAsDirty()"
+            (paste)="control.markAsDirty()"
+          >
+          <mat-datepicker #datepicker></mat-datepicker>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #withTypeahead>
+      <input
+          #input
+          [type]="type"
+          [placeholder]="placeholder"
+          [formControl]="control"
+          [attr.maxlength]="maxLength"
+          [autocomplete]="autocomplete"
+          [matAutocomplete]="typeahead"
+          matAutocompletePosition="below"
+          (blur)="emitBlur()"
+      >
+    </ng-template>
+
+    <button
+      type="button"
+      *ngIf="suffix && control.enabled && suffix.clickable"
+      mat-icon-button
+      color="accent"
+      class="suffix suffix--clickable"
+      [ngClass]="{
+        'calendar': type === 'datepicker',
+        'suffix--text': isTextIcon(suffix.icon),
+        'suffix--disabled': control.disabled
+       }"
+      (click)="onSuffixClick()"
+    >
+      <ng-container *ngIf="isTextIcon(suffix.icon)">{{ suffix.icon }}</ng-container>
+      <mat-icon *ngIf="!isTextIcon(suffix.icon)">{{ suffix.icon }}</mat-icon>
+    </button>
+
+    <span
+      *ngIf="suffix && !suffix.clickable"
+      class="suffix mat-icon-button"
+      [ngClass]="{'suffix--text': isTextIcon(suffix.icon), 'suffix--disabled': control.disabled}"
+      tabindex="-1"
+    >
+      <span class="mat-button-wrapper">
+        <ng-container *ngIf="isTextIcon(suffix.icon)">{{ suffix.icon }}</ng-container>
+        <mat-icon *ngIf="!isTextIcon(suffix.icon)">{{ suffix.icon }}</mat-icon>
+      </span>
+    </span>
+
+  </div>
+  <div *ngIf="allowError" class="text-field__error">
+    <ng-container *ngIf="showErrors">
+<!--      <adl-form-error-->
+<!--        *ngFor="let error of errorMessages"-->
+<!--        [control]="control"-->
+<!--        [error]="error.key"-->
+<!--      >{{ error.message }}</adl-form-error>-->
+    </ng-container>
+  </div>
+</div>

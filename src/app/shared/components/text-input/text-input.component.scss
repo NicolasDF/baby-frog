@@ -1,0 +1,274 @@
+/*
+@import '../../../../styles/variables';
+@import '~@angular/material/theming';
+
+.text-field {
+
+  &__container {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: -30px;
+
+    &--error .text-field__input {
+      &, &:hover, &:focus:hover {
+        border-color: mat-color($aul-warn, 500);
+        transition: border-color 0.5s ease;
+      }
+    }
+
+    &--focus {
+
+      &, &:hover {
+
+        .text-field__input {
+          border-color: mat-color($aul-accent, 500);
+
+          &.public {
+            background-color: mat-color($aul-accent, 50);
+
+            mat-icon {
+              color: mat-color($aul-accent, 500);
+            }
+          }
+
+          &.secure {
+            background-color: mat-color($aul-accent, A100);
+
+            mat-icon {
+              color: $text-color-secondary;
+            }
+          }
+
+          .prefix,
+          .suffix {
+
+            &--clickable {
+              mat-icon {
+                color: mat-color($aul-accent, 500);
+              }
+            }
+
+          }
+        }
+
+      }
+    }
+
+    label {
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .label {
+
+      &__icon {
+        position: absolute;
+        font-size: 15px;
+        margin-left: 5px;
+        height: 15px;
+        width: 15px;
+        margin-top: 2px;
+        cursor: pointer;
+      }
+
+      &__required {
+        color: #E02020;
+        margin-left: 3px;
+      }
+    }
+
+  }
+
+  &__label-container {
+    display: table-cell;
+    height: 38px;
+    vertical-align: bottom;
+  }
+
+  &__error {
+    min-height: 20px;
+    margin-top: 3px;
+    text-align: left;
+  }
+
+  &__input {
+    width: 100%;
+    margin-top: 5px;
+    position: relative;
+    border: 2px solid #EFEFEF;
+    background: #FFF;
+
+    &:hover {
+      border-color: $gray900;
+    }
+
+    &--disabled:hover {
+      border-color: #EFEFEF;
+    }
+
+    &.public {
+      input {
+        padding: 13px 10px;
+        line-height: 19px;
+      }
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600 !important;
+      text-overflow: ellipsis;
+      background: none;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::-ms-clear, &::-ms-reveal {
+        display: none;
+      }
+
+      &:disabled {
+        background-color: rgba(221,221,221,0.3);
+        color: rgba(0,0,0,0.3);
+
+        @supports (-ms-ime-align:auto) {
+          text-overflow: unset;
+        }
+
+        &::placeholder {
+          color: rgba(0,0,0,0.3);
+        }
+      }
+
+      &[type=number]::-webkit-inner-spin-button,
+      &[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    .mat-icon-button {
+      position: absolute;
+      top: 3px;
+      color: $text-color-secondary;
+
+      &:hover {
+        color: $text-color-primary;
+      }
+    }
+
+    &--prefix {
+
+      .prefix{
+        left: 8px;
+      }
+
+      &.public {
+        input {
+          padding-left: 52px;
+        }
+      }
+    }
+
+    &--suffix {
+
+      .suffix {
+        right: 8px;
+
+        &.calendar {
+          right: 0;
+
+          .mat-icon {
+            font-size: 20px;
+            line-height: 1;
+          }
+        }
+
+        &--text {
+          font-family: $font-family-primary;
+          font-size: 18px;
+          font-weight: 600;
+          pointer-events: none;
+        }
+      }
+
+      &.public {
+        input {
+          padding-right: 52px;
+
+          &.datepicker {
+            padding-right: 35px;
+          }
+        }
+      }
+    }
+
+    &.secure {
+      &.text-field__input {
+        &--prefix {
+          .prefix {
+            pointer-events: none;
+            width: 25px;
+            left: 0;
+            top: -1px;
+
+            &--disabled {
+              color: rgba(0,0,0,0.3);
+            }
+
+            &::ng-deep {
+              .mat-button-wrapper .material-icons {
+                font-size: 18px;
+              }
+            }
+          }
+
+          input {
+            padding-left: 20px;
+          }
+        }
+
+        &--suffix {
+          .suffix {
+            width: 35px;
+            right: 0;
+            top: 0;
+
+            &--disabled {
+              color: rgba(0,0,0,0.3);
+            }
+
+            &::ng-deep {
+              .mat-button-wrapper .material-icons {
+                font-weight: 600;
+                font-size: 18px;
+              }
+            }
+          }
+
+          input {
+            padding-right: 30px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+:host ::ng-deep .text-field__container label + a{
+  color: $text-color-secondary;
+  font-size: 14px;
+  line-height: 19px;
+  text-decoration: none;
+  float: right;
+
+  &:hover {
+    color: $text-color-primary;
+  }
+}
+*/

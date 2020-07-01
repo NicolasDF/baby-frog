@@ -1,0 +1,14 @@
+.header {
+  &__title {
+
+  }
+
+  &__navigation {
+    margin-left: auto;
+    margin-right: 150px;
+
+    a {
+      width: 150px;
+    }
+  }
+}
