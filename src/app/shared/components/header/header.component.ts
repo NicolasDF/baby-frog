@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { HeaderItem } from '../../models/header-item.model';
 
 @Component({
@@ -10,9 +9,7 @@ import { HeaderItem } from '../../models/header-item.model';
 export class HeaderComponent implements OnInit {
   sections: HeaderItem[];
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor( ) { }
 
   ngOnInit() {
     this.sections = [
@@ -29,10 +26,6 @@ export class HeaderComponent implements OnInit {
         route: 'productos'
       }
     ];
-  }
-
-  navigateTo(url: string): void {
-    this.router.navigate([url]);
   }
 
 }
